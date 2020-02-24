@@ -1,0 +1,3 @@
+server:
+  # TODO: Update server port to a unique value.
+  port: 8080
