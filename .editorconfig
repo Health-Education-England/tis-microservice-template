@@ -1,0 +1,18 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.java]
+# IDE specific config should not be included, but this workaround is required
+# to allow correct indentation of continued lines, otherwise an ident of two is
+# used.
+ij_continuation_indent_size = 4

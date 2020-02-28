@@ -1,0 +1,6 @@
+# Default Behaviour
+* text=auto
+
+# Export Ignore
+.gitattributes export-ignore
+.gitignore     export-ignore
