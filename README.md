@@ -27,6 +27,7 @@ the code, with the following additional changes.
  - Update copyright year in [LICENSE](LICENSE).
  - Update copyright year in [TemplateApplication].
  - Update copyright year in [TemplateApplicationTest].
+ - Update the references to `tis-template` and port number in [task-definition].
  - Update this README.
  - Provide `SENTRY_DSN` and `SENTRY_ENVIRONMENT` as environmental variables
    during deployment.
@@ -37,5 +38,6 @@ This project uses [Semantic Versioning](semver.org).
 ## License
 This project is license under [The MIT License (MIT)](LICENSE).
 
+[task-definition]: .aws/task-definition.json
 [TemplateApplication]: src/main/java/uk/nhs/hee/tis/template/TemplateApplication.java
 [TemplateApplicationTest]: src/test/java/uk/nhs/hee/tis/template/TemplateApplicationTest.java
