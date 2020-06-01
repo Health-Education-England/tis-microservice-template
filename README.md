@@ -28,8 +28,14 @@ the code, with the following additional changes.
  - Update copyright year in [TemplateApplication].
  - Update copyright year in [TemplateApplicationTest].
  - Update this README.
+ - Set up Sentry project.
  - Provide `SENTRY_DSN` and `SENTRY_ENVIRONMENT` as environmental variables
    during deployment.
+ - Add repository to SonarCloud.
+ - Add SonarCloud API key to repository secrets.
+ - Add repository to Dependabot.
+ - Update the references to `tis-template` and port number in [task-definition].
+ - Add the AWS credentials to repository secrets.
 
 ## Versioning
 This project uses [Semantic Versioning](semver.org).
@@ -37,5 +43,6 @@ This project uses [Semantic Versioning](semver.org).
 ## License
 This project is license under [The MIT License (MIT)](LICENSE).
 
+[task-definition]: .aws/task-definition.json
 [TemplateApplication]: src/main/java/uk/nhs/hee/tis/template/TemplateApplication.java
 [TemplateApplicationTest]: src/test/java/uk/nhs/hee/tis/template/TemplateApplicationTest.java
