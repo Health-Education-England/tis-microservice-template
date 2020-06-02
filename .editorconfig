@@ -13,6 +13,6 @@ trim_trailing_whitespace = false
 
 [*.java]
 # IDE specific config should not be included, but this workaround is required
-# to allow correct indentation of continued lines, otherwise an ident of two is
+# to allow correct indentation of continued lines, otherwise an indent of two is
 # used.
 ij_continuation_indent_size = 4
