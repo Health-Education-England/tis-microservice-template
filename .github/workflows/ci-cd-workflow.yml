@@ -124,7 +124,7 @@ jobs:
 #
 #  dockerize:
 #    name: Dockerize
-#    needs: [assemble]
+#    needs: [assemble, test]
 #    runs-on: ubuntu-latest
 #    if: github.ref == 'refs/heads/master'
 #
