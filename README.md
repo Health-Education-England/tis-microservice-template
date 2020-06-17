@@ -37,6 +37,11 @@ the code, with the following additional changes.
  - Update the references to `tis-template` and port number in [task-definition].
  - Add the AWS credentials to repository secrets.
 
+## Workflow
+The `CI/CD Workflow` is triggered on push to any branch.
+
+![CI/CD workflow](.github/workflows/ci-cd-workflow.svg "CI/CD Workflow")
+
 ## Versioning
 This project uses [Semantic Versioning](semver.org).
 
