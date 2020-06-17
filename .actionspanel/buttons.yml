@@ -1,0 +1,8 @@
+buttons:
+  - title: Run CI/CD
+    action: "run_ci-cd"
+    description: Run CI/CD
+
+  - title: Purge Artifacts
+    action: "purge_artifacts"
+    description: Purge Artifacts
