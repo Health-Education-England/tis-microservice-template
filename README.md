@@ -21,7 +21,7 @@ Code quality checking and enforcement is done with the following tools:
 
 Error and exception logging is done using Sentry.
 
-## Usage
+## TODO
 To use this template, create a new repository from it and follow the TODOs in
 the code, with the following additional changes.
  - Update copyright year in [LICENSE](LICENSE).
@@ -35,7 +35,6 @@ the code, with the following additional changes.
  - Add SonarCloud API key to repository secrets.
  - Add repository to Dependabot.
  - Update the references to `tis-template` and port number in [task-definition].
- - Add the AWS credentials to repository secrets.
 
 ## Workflow
 The `CI/CD Workflow` is triggered on push to any branch.
