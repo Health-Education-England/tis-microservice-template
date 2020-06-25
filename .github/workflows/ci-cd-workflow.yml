@@ -191,7 +191,7 @@ jobs:
 #        with:
 #          task-definition: ${{ steps.task-def.outputs.task-definition }}
 #          # TODO: service name if different
-#          service: ${{ github.event.repository.name }
+#          service: ${{ github.event.repository.name }}
 #          # TODO: cluster name
 #          cluster:
 #          wait-for-service-stability: true
