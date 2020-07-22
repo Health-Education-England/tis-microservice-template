@@ -35,6 +35,7 @@ the code, with the following additional changes.
  - Add SonarCloud API key to repository secrets.
  - Add repository to Dependabot.
  - Update the references to `tis-template` and port number in [task-definition].
+ - Update manage access in GitHub settings.
 
 ## Workflow
 The `CI/CD Workflow` is triggered on push to any branch.
