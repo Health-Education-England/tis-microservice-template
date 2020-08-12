@@ -1,10 +1,9 @@
 name: Purge Old Artifacts
 
 on:
-  repository_dispatch:
-    types: [purge_artifacts]
   schedule:
     - cron: '0 1 * * *'
+  workflow_dispatch:
 
 jobs:
   purge:
