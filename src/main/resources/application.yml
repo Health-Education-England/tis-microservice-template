@@ -3,3 +3,7 @@ server:
   port: 8080
   servlet:
     context-path: /template
+
+sentry:
+  dsn: ${SENTRY_DSN:}
+  environment: ${SENTRY_ENVIRONMENT:}
