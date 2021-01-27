@@ -28,14 +28,18 @@ the code, with the following additional changes.
  - Update copyright year in [TemplateApplication].
  - Update copyright year in [TemplateApplicationTest].
  - Update this README.
- - Set up Sentry project.
- - Provide `SENTRY_DSN` and `SENTRY_ENVIRONMENT` as environmental variables
+ - Sentry:
+    - Set up Sentry project.
+    - Provide `SENTRY_DSN` and `SENTRY_ENVIRONMENT` as environmental variables
    during deployment.
- - Add repository to SonarCloud.
- - Add SonarCloud API key to repository secrets.
+ - Sonar:
+    - Add repository to SonarCloud.
+    - Add SonarCloud API key to repository secrets.
  - Add repository to Dependabot.
  - Update the references to `tis-template` and port number in [task-definition].
- - Update manage access in GitHub settings.
+ - Github settings:
+   - Update manage access in GitHub settings.
+   - Enable Environments > Environment protection rules 
 
 ## Workflow
 The `CI/CD Workflow` is triggered on push to any branch.
