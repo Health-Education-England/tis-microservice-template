@@ -5,8 +5,41 @@ on:
   workflow_dispatch:
 
 jobs:
+  validate-wrapper:
+    name: Validate Gradle wrapper
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Gradle wrapper validation
+        uses: gradle/wrapper-validation-action@v1.0.3
+
+  cache-distribution:
+    name: Cache Gradle distribution
+    needs: validate-wrapper
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache Gradle distribution
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+
+      - name: Download Gradle distribution
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: ./gradlew
+
   assemble:
     name: Assemble JAR
+    needs: cache-distribution
     runs-on: ubuntu-latest
 
     steps:
@@ -17,6 +50,13 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
+      - name: Cache Gradle distribution
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
 
       - name: Build with Gradle
         run: ./gradlew assemble
@@ -29,6 +69,7 @@ jobs:
 
   check:
     name: Perform checks
+    needs: cache-distribution
     runs-on: ubuntu-latest
 
     steps:
@@ -39,6 +80,13 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
+      - name: Cache Gradle distribution
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
 
       - name: Run Gradle checks
         run: ./gradlew check -x test
@@ -51,6 +99,7 @@ jobs:
 
   test:
     name: Run automated tests
+    needs: cache-distribution
     runs-on: ubuntu-latest
 
     steps:
@@ -61,6 +110,13 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
+      - name: Cache Gradle distribution
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
 
       - name: Run Gradle tests
         run: ./gradlew test
@@ -90,6 +146,13 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
+      - name: Cache Gradle distribution
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
 
       - name: Run quality analysis
         env:
@@ -157,8 +220,8 @@ jobs:
 #          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }} $ECR_REGISTRY/$ECR_REPOSITORY:latest
 #          docker push $ECR_REGISTRY/$ECR_REPOSITORY
 #
-#  deploy:
-#    name: Deploy
+#  deploy-preprod:
+#    name: Deploy pre-production configured service
 #    needs: dockerize
 #    runs-on: ubuntu-latest
 #
@@ -185,7 +248,53 @@ jobs:
 #          container-name: ${{ github.event.repository.name }}
 #          image: ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:${{ github.sha }}
 #
-#      - name: Deploy Amazon ECS task definition
+#      - name: Deploy Amazon ECS task definition to preprod
+#        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+#        with:
+#          task-definition: ${{ steps.task-def.outputs.task-definition }}
+#          # TODO: service name if different
+#          service: ${{ github.event.repository.name }}
+#          # TODO: cluster name
+#          cluster:
+#          wait-for-service-stability: true
+#
+#      - name: Push stable tag image to Amazon ECR
+#        env:
+#          ECR_REPOSITORY: ${{ github.event.repository.name }}
+#          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+#        run: |
+#          docker pull $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }}
+#          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }} $ECR_REGISTRY/$ECR_REPOSITORY:stable
+#          docker push $ECR_REGISTRY/$ECR_REPOSITORY
+#
+#  deploy-prod:
+#    name: Deploy production configured service
+#    runs-on: ubuntu-latest
+#    environment: prod
+#    needs: deploy-preprod
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          aws-region: eu-west-2
+#
+#      - name: Log in to Amazon ECR
+#        id: login-ecr
+#        uses: aws-actions/amazon-ecr-login@v1
+#
+#      - name: Fill in the new image ID in the Amazon ECS task definition
+#        id: task-def
+#        uses: aws-actions/amazon-ecs-render-task-definition@v1
+#        with:
+#          task-definition: .aws/task-definition-prod.json
+#          container-name: ${{ github.event.repository.name }}
+#          image: ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:stable
+#
+#      - name: Deploy Amazon ECS task definition to prod
 #        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
 #        with:
 #          task-definition: ${{ steps.task-def.outputs.task-definition }}
