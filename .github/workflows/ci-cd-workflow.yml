@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Gradle wrapper validation
-        uses: gradle/wrapper-validation-action@v1.0.3
+        uses: gradle/wrapper-validation-action@v1.0.4
 
   cache-distribution:
     name: Cache Gradle distribution
