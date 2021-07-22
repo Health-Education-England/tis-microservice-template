@@ -227,6 +227,7 @@ jobs:
 #  deploy-preprod:
 #    name: Deploy pre-production configured service
 #    needs: dockerize
+#    environment: preprod
 #    runs-on: ubuntu-latest
 #
 #    steps:
@@ -276,6 +277,8 @@ jobs:
 #    runs-on: ubuntu-latest
 #    environment: prod
 #    needs: deploy-preprod
+#
+#    steps:
 #      - name: Checkout
 #        uses: actions/checkout@v2
 #
