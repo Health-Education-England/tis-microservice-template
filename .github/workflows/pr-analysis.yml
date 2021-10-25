@@ -11,5 +11,3 @@ jobs:
     uses: health-education-england/.github/.github/workflows/pr-analysis-gradle.yml@main
     secrets:
       sonar-token: ${{ secrets.SONAR_TOKEN }}
-      codeartifact-username: ${{ secrets.AWS_MAVEN_USERNAME }}
-      codeartifact-password: ${{ secrets.AWS_MAVEN_PASSWORD }}
