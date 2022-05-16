@@ -142,7 +142,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download build artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: reports
           path: build/reports
@@ -174,7 +174,7 @@ jobs:
 #
 #    steps:
 #      - name: Download build artifacts
-#        uses: actions/download-artifact@v2
+#        uses: actions/download-artifact@v3
 #        with:
 #          path: build-artifacts
 #
@@ -201,7 +201,7 @@ jobs:
 #        uses: actions/checkout@v3
 #
 #      - name: Download build artifact
-#        uses: actions/download-artifact@v2
+#        uses: actions/download-artifact@v3
 #        with:
 #          name: app-jar
 #          path: build/libs
