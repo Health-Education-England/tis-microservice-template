@@ -65,7 +65,7 @@ jobs:
         run: ./gradlew assemble
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: app-jar
           path: build/libs/*.jar
@@ -96,7 +96,7 @@ jobs:
         run: ./gradlew check -x test
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: reports
           path: build/reports
@@ -127,7 +127,7 @@ jobs:
         run: ./gradlew test
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: reports
           path: build/reports
