@@ -35,7 +35,7 @@ the code, with the following additional changes.
  - Sonar:
     - Add repository to SonarCloud.
     - Add SonarCloud API key to repository secrets.
- - Add repository to Dependabot.
+ - Update Dependabot configuration.
  - Update the references to `tis-template` and port number in [task-definition].
  - Github settings:
    - Update manage access in GitHub settings.
