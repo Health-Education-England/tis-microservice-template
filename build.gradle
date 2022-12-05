@@ -42,7 +42,7 @@ dependencies {
   testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 
   // Sentry reporting
-  ext.sentryVersion = "6.8.0"
+  ext.sentryVersion = "6.9.1"
   implementation "io.sentry:sentry-spring-boot-starter:$sentryVersion"
   implementation "io.sentry:sentry-logback:$sentryVersion"
 }
