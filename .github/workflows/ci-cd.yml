@@ -9,12 +9,10 @@ jobs:
   # TODO: delete this build job and uncomment the ci-cd job once ready to deploy.
   build:
     uses: health-education-england/.github/.github/workflows/build-gradle.yml@main
+    with:
+      # TODO: delete or set to true depending on codeartifict requirements
+      use-codeartifact: false
     secrets:
-      # TODO: delete or uncomment depending on codeartifict requirements
-      # codeartifact-username: ${{ secrets.AWS_MAVEN_USERNAME }}
-      # codeartifact-password: ${{ secrets.AWS_MAVEN_PASSWORD }}
-      ecr-username: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      ecr-password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       sonar-token: ${{ secrets.SONAR_TOKEN }}
 
 #  ci-cd:
@@ -22,10 +20,6 @@ jobs:
 #    uses: health-education-england/.github/.github/workflows/ci-cd-gradle.yml@main
 #    with:
 #      cluster-prefix: # TODO: add ECS cluster prefix
+#      use-codeartifact: false # TODO: delete or set to true depending on codeartifict requirements
 #    secrets:
-#      # TODO: delete or uncomment depending on codeartifict requirements
-#      # codeartifact-username: ${{ secrets.AWS_MAVEN_USERNAME }}
-#      # codeartifact-password: ${{ secrets.AWS_MAVEN_PASSWORD }}
-#      ecr-username: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#      ecr-password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 #      sonar-token: ${{ secrets.SONAR_TOKEN }}
