@@ -1,11 +1,11 @@
 plugins {
-  id "java"
+  java
   id("org.springframework.boot") version "3.1.4"
   id("io.spring.dependency-management") version "1.1.3"
 
   // Code quality plugins
-  id "checkstyle"
-  id "jacoco"
+  checkstyle
+  jacoco
   id("org.sonarqube") version "4.4.0.3356"
 }
 
@@ -15,7 +15,7 @@ version = "0.0.1"
 
 configurations {
   compileOnly {
-    extendsFrom(annotationProcessor)
+    extendsFrom(configurations.annotationProcessor.get())
   }
 }
 
@@ -34,13 +34,13 @@ dependencies {
   annotationProcessor("org.projectlombok:lombok")
 
   // MapStruct
-  ext.mapstructVersion = "1.5.5.Final"
+  val mapstructVersion = "1.5.5.Final"
   implementation("org.mapstruct:mapstruct:${mapstructVersion}")
   annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
   testAnnotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
 
   // Sentry reporting
-  ext.sentryVersion = "6.33.0"
+  val sentryVersion = "6.33.0"
   implementation("io.sentry:sentry-spring-boot-starter:$sentryVersion")
   implementation("io.sentry:sentry-logback:$sentryVersion")
 }
@@ -53,7 +53,7 @@ java {
 }
 
 checkstyle {
-  config = resources.text.fromArchiveEntry(configurations.checkstyle[0], "google_checks.xml")
+  config = resources.text.fromArchiveEntry(configurations.checkstyle.get().first(), "google_checks.xml")
 }
 
 sonarqube {
