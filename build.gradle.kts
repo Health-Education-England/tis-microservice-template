@@ -1,12 +1,12 @@
 plugins {
   java
-  id("org.springframework.boot") version "3.1.4"
-  id("io.spring.dependency-management") version "1.1.3"
+  id("org.springframework.boot") version "3.2.0"
+  id("io.spring.dependency-management") version "1.1.4"
 
   // Code quality plugins
   checkstyle
   jacoco
-  id("org.sonarqube") version "4.4.0.3356"
+  id("org.sonarqube") version "4.4.1.3373"
 }
 
 // TODO: Update group to end with "admin" or "trainee".
@@ -40,7 +40,7 @@ dependencies {
   testAnnotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
 
   // Sentry reporting
-  val sentryVersion = "6.33.0"
+  val sentryVersion = "7.1.0"
   implementation("io.sentry:sentry-spring-boot-starter:$sentryVersion")
   implementation("io.sentry:sentry-logback:$sentryVersion")
 }
