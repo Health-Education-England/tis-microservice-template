@@ -23,3 +23,4 @@ jobs:
 #      use-codeartifact: false # TODO: delete or set to true depending on codeartifict requirements
 #    secrets:
 #      sonar-token: ${{ secrets.SONAR_TOKEN }}
+#      reject-pat: ${{ secrets.PAT_REJECT_APPROVALS }}
