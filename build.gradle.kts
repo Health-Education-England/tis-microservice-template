@@ -6,7 +6,7 @@ plugins {
   // Code quality plugins
   checkstyle
   jacoco
-  id("org.sonarqube") version "5.0.0.4638"
+  id("org.sonarqube") version "6.0.1.5171"
 }
 
 // TODO: Update group to end with "admin" or "trainee".
