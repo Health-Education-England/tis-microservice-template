@@ -4,19 +4,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
-    reviewers:
-      - Health-Education-England/external-admin-backend
-      - Health-Education-England/internal-admin-backend
-      - Health-Education-England/trainee-backend
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
-    reviewers:
-      - Health-Education-England/external-admin-backend
-      - Health-Education-England/internal-admin-backend
-      - Health-Education-England/trainee-backend
-      - Health-Education-England/external-admin-devops
-      - Health-Education-England/internal-admin-devops
-      - Health-Education-England/trainee-devops
