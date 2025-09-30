@@ -1,0 +1,12 @@
+# --- Default ownership ---
+* @Health-Education-England/trainee
+
+# --- Shared ownership ---
+/.gitattributes @Health-Education-England/trainee @Health-Education-England/ops
+/.gitignore     @Health-Education-England/trainee @Health-Education-England/ops
+
+# --- DevOps owned ---
+/.aws/              @Health-Education-England/ops
+/.github/workflows/ @Health-Education-England/ops
+/gradlew            @Health-Education-England/ops
+/gradlew.bat        @Health-Education-England/ops

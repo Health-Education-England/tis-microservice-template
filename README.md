@@ -35,8 +35,24 @@ the code, with the following additional changes.
  - Sonar:
     - Add repository to SonarCloud.
     - Add SonarCloud API key to repository secrets.
- - Update Dependabot configuration to remove unneeded teams.
  - Update the references to `tis-template` and port number in [task-definition].
+ - Update the `CODEOWNERS` file to reflect the correct owning teams for the new service.
+
+## CODEOWNERS Examples
+
+Below are example teams and patterns you can use when updating the `CODEOWNERS` file.
+Replace the placeholders with the appropriate backend and DevOps teams.
+
+- Backend teams:
+  - @Health-Education-England/external-admin-backend
+  - @Health-Education-England/internal-admin-backend
+  - @Health-Education-England/trainee-backend
+  - @Health-Education-England/trainee
+- DevOps teams:
+  - @Health-Education-England/external-admin-devops
+  - @Health-Education-England/internal-admin-devops
+  - @Health-Education-England/trainee-devops
+  - @Health-Education-England/ops
 
 ## Versioning
 This project uses [Semantic Versioning](semver.org).
