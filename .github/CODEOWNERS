@@ -1,12 +1,18 @@
 # --- Default ownership ---
-* @Health-Education-England/trainee
+# Replace with the appropriate owning team for this service.
+#       - @Health-Education-England/external-admin-backend
+#       - @Health-Education-England/internal-admin-backend
+#       - @Health-Education-England/trainee-backend
+* @Health-Education-England/tis
 
 # --- Shared ownership ---
-/.gitattributes @Health-Education-England/trainee @Health-Education-England/ops
-/.gitignore     @Health-Education-England/trainee @Health-Education-England/ops
+# Remove irrelevant teams
+/.gitattributes @Health-Education-England/external-admin-backend @Health-Education-England/internal-admin-backend @Health-Education-England/trainee-backend @Health-Education-England/external-admin-devops @Health-Education-England/internal-admin-devops @Health-Education-England/trainee-devops
+/.gitignore     @Health-Education-England/external-admin-backend @Health-Education-England/internal-admin-backend @Health-Education-England/trainee-backend @Health-Education-England/external-admin-devops @Health-Education-England/internal-admin-devops @Health-Education-England/trainee-devops
 
 # --- DevOps owned ---
-/.aws/              @Health-Education-England/ops
-/.github/workflows/ @Health-Education-England/ops
-/gradlew            @Health-Education-England/ops
-/gradlew.bat        @Health-Education-England/ops
+# Remove irrelevant teams
+/.aws/              @Health-Education-England/external-admin-devops @Health-Education-England/internal-admin-devops @Health-Education-England/trainee-devops
+/.github/workflows/ @Health-Education-England/external-admin-devops @Health-Education-England/internal-admin-devops @Health-Education-England/trainee-devops
+/gradlew            @Health-Education-England/external-admin-devops @Health-Education-England/internal-admin-devops @Health-Education-England/trainee-devops
+/gradlew.bat        @Health-Education-England/external-admin-devops @Health-Education-England/internal-admin-devops @Health-Education-England/trainee-devops
