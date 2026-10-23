@@ -24,10 +24,15 @@ package uk.nhs.hee.tis.template;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * TODO: Update package and class name and add a description.
+ */
 @SpringBootApplication
-//TODO: Update package and class name.
 public class TemplateApplication {
 
+  /**
+   * Main method to run the Spring Boot application.
+   */
   public static void main(String[] args) {
     SpringApplication.run(TemplateApplication.class);
   }
