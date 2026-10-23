@@ -1,8 +1,9 @@
 plugins {
   java
-  id("org.springframework.boot") version "3.5.5"
-  id("io.spring.dependency-management") version "1.1.5"
+  id("org.springframework.boot") version "4.1.1"
+  id("io.spring.dependency-management") version "1.1.7"
 
+  id("io.sentry.jvm.gradle") version "6.24.0"
   // Code quality plugins
   checkstyle
   jacoco
@@ -38,16 +39,11 @@ dependencies {
   implementation("org.mapstruct:mapstruct:${mapstructVersion}")
   annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
   testAnnotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
-
-  // Sentry reporting
-  val sentryVersion = "8.19.1"
-  implementation("io.sentry:sentry-spring-boot-starter-jakarta:$sentryVersion")
-  implementation("io.sentry:sentry-logback:$sentryVersion")
 }
 
 java {
   toolchain {
-    languageVersion.set(JavaLanguageVersion.of(17))
+    languageVersion.set(JavaLanguageVersion.of(25))
     vendor.set(JvmVendorSpec.ADOPTIUM)
   }
 }
