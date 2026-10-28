@@ -7,6 +7,7 @@ plugins {
   // Code quality plugins
   checkstyle
   jacoco
+  // App monitoring and reporting
   id("org.sonarqube") version "6.2.0.5505"
 }
 
@@ -27,8 +28,8 @@ repositories {
 dependencies {
   // Spring Boot starters
   implementation("org.springframework.boot:spring-boot-starter-actuator")
-  implementation("org.springframework.boot:spring-boot-starter-web")
-  testImplementation("org.springframework.boot:spring-boot-starter-test")
+  implementation("org.springframework.boot:spring-boot-starter-webmvc")
+  testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
 
   // Lombok
   compileOnly("org.projectlombok:lombok")
@@ -39,6 +40,9 @@ dependencies {
   implementation("org.mapstruct:mapstruct:${mapstructVersion}")
   annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
   testAnnotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+
+  // Sentry App monitoring and reporting
+  implementation("io.sentry:sentry-logback")
 }
 
 java {
