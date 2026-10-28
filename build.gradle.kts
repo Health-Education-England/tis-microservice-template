@@ -1,11 +1,13 @@
 plugins {
   java
-  id("org.springframework.boot") version "3.5.5"
-  id("io.spring.dependency-management") version "1.1.5"
+  id("org.springframework.boot") version "4.1.1"
+  id("io.spring.dependency-management") version "1.1.7"
 
+  id("io.sentry.jvm.gradle") version "6.24.0"
   // Code quality plugins
   checkstyle
   jacoco
+  // App monitoring and reporting
   id("org.sonarqube") version "6.2.0.5505"
 }
 
@@ -26,8 +28,8 @@ repositories {
 dependencies {
   // Spring Boot starters
   implementation("org.springframework.boot:spring-boot-starter-actuator")
-  implementation("org.springframework.boot:spring-boot-starter-web")
-  testImplementation("org.springframework.boot:spring-boot-starter-test")
+  implementation("org.springframework.boot:spring-boot-starter-webmvc")
+  testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
 
   // Lombok
   compileOnly("org.projectlombok:lombok")
@@ -39,15 +41,13 @@ dependencies {
   annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
   testAnnotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
 
-  // Sentry reporting
-  val sentryVersion = "8.19.1"
-  implementation("io.sentry:sentry-spring-boot-starter-jakarta:$sentryVersion")
-  implementation("io.sentry:sentry-logback:$sentryVersion")
+  // Sentry App monitoring and reporting
+  implementation("io.sentry:sentry-logback")
 }
 
 java {
   toolchain {
-    languageVersion.set(JavaLanguageVersion.of(17))
+    languageVersion.set(JavaLanguageVersion.of(25))
     vendor.set(JvmVendorSpec.ADOPTIUM)
   }
 }

@@ -4,7 +4,7 @@
 This is a template to be used for TIS microservices with the following
 technology:
 
- - Java 17
+ - Java 25
  - Spring Boot
  - Gradle
  - JUnit 5
